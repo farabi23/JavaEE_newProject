@@ -2,6 +2,7 @@ package servlets;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DBManager {
 
@@ -28,7 +29,7 @@ public class DBManager {
        Tasks foundTask = null;
 
        for (Tasks task : taskList) {
-           if (task.getId() == id) {
+           if (task.getId().equals(id)) {
                foundTask = task;
            }
        }
@@ -44,11 +45,16 @@ public class DBManager {
     }
 
     public static void deleteTask(Long id) {
-           for (Tasks task : taskList) {
-               if (task.getId() == id) {
-                   taskList.remove(task);
-               }
-           }
+        Tasks foundTask = null;
+
+        for (Tasks task : taskList) {
+            if (task.getId() == id) {
+                foundTask = task;
+            }
+        }
+        if (foundTask != null) {
+            taskList.remove(foundTask);
+        }
 
     }
 

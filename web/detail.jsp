@@ -1,4 +1,4 @@
-<%@ page import="servlets.Item" %>
+
 <%@ page import="java.util.List" %>
 <%@ page import="servlets.Tasks" %><%--
   Created by IntelliJ IDEA.
@@ -50,7 +50,7 @@
 </nav>
 
 <div class="form-container">
-<form action="/details" method="post">
+<form action="/details" method="post" style="display: flex; flex-direction: column;">
 <%
     Tasks task = (Tasks) request.getAttribute("task");
     if(task != null){
@@ -81,13 +81,22 @@
         <label class="form-label">Finished: </label>
         <input class="form-control" type="text" name="finished" value=" <%=task.getFinished()%> ">
     </div>
-
+    <br>
     <button class = "btn btn-success" type="submit">Save</button>
+</form>
+
+</div>
+<div class="form-container">
+    <form action="/delete" method="post" style="display: flex; flex-direction: column;">
+        <input type="hidden" name="id" value="<%=task.getId()%>">
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+</div>
     <%
         }
     %>
-</form>
-</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

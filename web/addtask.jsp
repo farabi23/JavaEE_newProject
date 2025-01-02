@@ -1,4 +1,4 @@
-<%@ page import="servlets.Item" %>
+
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Farabi
